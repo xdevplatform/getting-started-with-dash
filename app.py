@@ -1,17 +1,20 @@
 import dash
 import dash_bootstrap_components as dbc
-from dash import dcc
-import dash_html_components as html
 import plotly.express as px
 import pandas as pd
 import os
 import requests
+from dash import dcc
+from dash import html
+
 
 app = dash.Dash(external_stylesheets=[dbc.themes.JOURNAL])
 
 server = app.server
 
 search_url = "https://api.twitter.com/2/tweets/counts/recent"
+
+# Update to include own handle
 query_params = {"query": "from:jessicagarson", "granularity": "day"}
 
 
@@ -70,4 +73,4 @@ app.layout = html.Div(
 )
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server()
